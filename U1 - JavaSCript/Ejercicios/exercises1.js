@@ -8,6 +8,27 @@
  */
 console.log("EXERCISE 1 - PART 1");
 
+function timesChar (string, char) {
+    if (typeof string.toLowerCase() !== "string" || typeof char.toLowerCase() !== "string") {
+        console.error("alguno de los 2 parametros no son strings");
+        return -1;
+    }else if (char.length !== 1) {
+        console.error("El segundo parámetro no es un Char");
+        return -1;
+    }
+
+    let cont = 0;
+    for(let i = 0; i < string.length; i++){
+        if(string[i] === char){
+            cont++;
+        }
+    }
+
+    console.log(string + " , " + char + " , " + cont)
+}
+
+timesChar("holacaracola", "a");
+
 
 
 /**
@@ -17,8 +38,9 @@ console.log("EXERCISE 1 - PART 1");
  * Check that the type of the parameter is "string", and the lenght is at least 1 or show an error
  * Example: isPalindrome("abeceba") -> true
  */
-
 console.log("EXERCISE 1 - PART 2");
+
+
 
 /**
  * Part 3
@@ -30,14 +52,17 @@ console.log("EXERCISE 1 - PART 2");
  */
 console.log("EXERCISE 1 - PART 3");
 
+
+
 /**
  * Part 4
  * Develop a function that compresses a string by replacing consecutive repeating characters with
  * the character and the count of repetitions. For example, "AAAABBBCC" would become "4A3B2C".
  * Example: stringCompression("GGGHHRRRRRRRUIIIOOOO") -> 3G2H7R1U3I4O
  */
-
 console.log("EXERCISE 1 - PART 4");
+
+
 
 /**
  * Part 5
@@ -51,6 +76,7 @@ console.log("EXERCISE 1 - PART 4");
 console.log("EXERCISE 1 - PART 5");
 
 
+
 /**
  * Part 6
  * Create a function that takes an array of numbers containing duplicate values. It should return the
@@ -59,16 +85,18 @@ console.log("EXERCISE 1 - PART 5");
  * (.forEach counts as a loop).
  * Example: findFirstRepeated([1,4,7,3,8,4,5,5,1]) -> 4
  */
-
 console.log("EXERCISE 1 - PART 6");
+
+
 
 /**
  * Part 7
  * Create an array with several strings. Using the reduce method, return a string
  * that is a concatenation of the first letter of every string in the array.
  */
-
 console.log("EXERCISE 1 - PART 7");
+
+
 
 /**
  * Part 8
@@ -77,8 +105,9 @@ console.log("EXERCISE 1 - PART 7");
  * in the second string. Try not to use loops.
  * Example: filterWords(["house", "car", "watch", "table"], "catboulerham") -> ['car', 'table']
  */
-
 console.log("EXERCISE 1 - PART 8");
+
+
 
 /**
  * Part 9
@@ -90,6 +119,7 @@ console.log("EXERCISE 1 - PART 8");
 console.log("EXERCISE 1 - PART 9");
 
 
+
 /**
  * Part 10
  * Create a Map object. The key will be a student name, and the value an array with all his/her exam marks.
@@ -98,6 +128,8 @@ console.log("EXERCISE 1 - PART 9");
  */
 console.log("EXERCISE 1 - PART 10");
 
+
+
 /**
  * Part 11
  * Create a Map collection where the key is the name of a dish and the value is an array of ingredients.
@@ -105,6 +137,8 @@ console.log("EXERCISE 1 - PART 10");
  * dishes where that ingredient appears.
  */
 console.log("EXERCISE 1 - PART 11");
+
+
 
 /**
  * Part 12
@@ -115,6 +149,7 @@ console.log("EXERCISE 1 - PART 11");
 console.log("EXERCISE 1 - PART 12");
 
 
+
 /**
  * Part 13
  * Create a function that receives an array and adds the first three numbers of the array.
@@ -122,8 +157,8 @@ console.log("EXERCISE 1 - PART 12");
  * If any of those numbers is not present in the array, a default value of 0 will be assigned
  * Return the result of adding those three numbers
  */
-
 console.log("EXERCISE 1 - PART 13");
+
 
 
 /**
@@ -133,8 +168,9 @@ console.log("EXERCISE 1 - PART 13");
  * Do not use loops.
  * Example: getStringLengths("potato", "milk", "car", "table") -> [6, 4, 3, 5]
  */
-
 console.log("EXERCISE 1 - PART 14");
+
+
 
 /**
  * Part 15
@@ -145,5 +181,6 @@ console.log("EXERCISE 1 - PART 14");
  *
  * No operation performed should modify the array on which it operates. Show the original array at the end.
  */
-
 console.log("EXERCISE 1 - PART 15");
+
+
