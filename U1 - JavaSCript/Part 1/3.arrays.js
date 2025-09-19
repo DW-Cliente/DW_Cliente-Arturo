@@ -53,8 +53,8 @@ console.log(nombres.toSpliced(2, 0, "Paco")); // [ 'Pepe', 'Juan', 'Paco', 'Mart
 console.log(nombres.toSpliced(1, 2, "Pedro", "María")); // [ 'Pepe', 'Pedro', 'María', 'Ana', 'David' ]
 
 const nombreP = nombres
-  .toSpliced(1, 2, "Pedro", "María")
-  .filter((n) => n.startsWith("P"))
-  .concat("Perico");
+  .toSpliced(1, 2, "Pedro", "María") // Replace "Marta" "Ana"
+  .filter((n) => n.startsWith("P")) // Filter names that start with "P"
+  .concat("Perico"); // Add "Perico" at the end
 
 console.log(nombreP); // [ 'Pepe', 'Pedro', 'Perico' ]
