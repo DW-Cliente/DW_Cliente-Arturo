@@ -38,6 +38,21 @@ saluda2("Tom"); // Hola Tom
 saluda2(); // Hola Anónimo
 saluda2(null) // Hola Nul (Solo para undefined)
 
+const a = [23, 45, 67, 89, 12];
+const iterador = Iterator.from(a);
+
+for(const n of iterador){
+    console.log(n);
+}
+// Imprime los valores: 23 45 67 89 12
+
+
+const ab = ["hola", "adiós", "casa", "coche"];
+const iterador2 = Iterator.from(ab);
+
+console.log(iterador2.flatMap((s) => [...s]).toArray()); 
+// ['h', 'o', 'l', 'a', 'a', 'd', 'i', 'ó', 's', 'c', 'a', 's', 'a', 'c', 'o', 'c', 'h', 'e']
+
 
 
 
