@@ -9,12 +9,3 @@ function getMedia(...notas) {
 
 console.log(getMedia(5, 7, 8.5, 6.75, 9, 6.75)); // Imprime 7.1666666
 
-let nums = [12, 32, 6, 8, 23];
-console.log(Math.max(nums)); // NaN
-console.log(Math.max(...nums)); // 32
-
-const a = [1,2,3,4];
-const b = [...a];
-a[0] = 99;
-console.log(a);
-console.log(b);
