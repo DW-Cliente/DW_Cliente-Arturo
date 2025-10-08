@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module" src="14.create_element.js"></script>
+    <style>
+        td:first-child img {
+            max-height: 30px;
+        }
+
+      .form-control {
+        margin-bottom: 10px;
+        input {
+          padding: 5px;
+
+          &:user-invalid {
+            border: 1px red solid;
+            outline: none;
+
+            & + small.error {
+                display: block;
+            }
+          }
+        }
+        .error {
+          color: red;
+          display: none;
+          font-size: 0.6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <form id="productForm">
+      <div class="form-control">
+        <input type="text" name="nombre" required />
+        <small class="error">El nombre es obligatorio</small>
+      </div>
+      <div class="form-control">
+        <input type="number" step="0.01" name="precio" min="0.01" required />
+        <small class="error">El precio es obligatorio, y mayor que 0,01€</small>
+      </div>
+      <div class="form-control">
+        <input type="file" name="imagen" required />
+        <small class="error"
+          >La imagen es obligatoria y formato jpg o png</small
+        >
+      </div>
+      <div class="form-control"><img src="" alt="" id="imgPreview" /></div>
+      <button type="submit">Añadir</button>
+    </form>
+
+    <table id="listaProductos">
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <template id="productTemplate">
+        <tr>
+            <td><img src="" alt=""></td>
+            <td class="nombre"></td>
+            <td class="precio"></td>
+            <td><button class="borrar">X</button></td>
+        </tr>
+    </template>
+  </body>
+</html>
