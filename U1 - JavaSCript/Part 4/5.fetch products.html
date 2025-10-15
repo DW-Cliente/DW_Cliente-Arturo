@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      td {
+        vertical-align: middle;
+        img {
+          height: 50px;
+        }
+      }
+    </style>
+    <script type="module" src="5.fetch products.js"></script>
+  </head>
+  <body>
+    <table id="tabla">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Available</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Aquí se insertan los productos -->
+      </tbody>
+    </table>
+
+    <template id="productTemplate">
+      <tr>
+        <td><img src="" alt="Product Image" /></td>
+        <td class="description"></td>
+        <td class="price"></td>
+        <td class="available"></td>
+      </tr>
+    </template>
+  </body>
+</html>
