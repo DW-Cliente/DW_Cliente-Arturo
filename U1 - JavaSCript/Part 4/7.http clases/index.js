@@ -1,7 +1,11 @@
+import { ProductosService } from "./productos.service.js";
+
 const tbody = document.querySelector("#tabla tbody");
 const template = document.querySelector("#productTemplate");
 const form = document.getElementById("productForm");
 const imgPreview = document.getElementById("imgPreview");
+
+const productosService = new ProductosService();
 
 function addProduct(product) {
   const tr = template.content.cloneNode(true).firstElementChild;
@@ -20,14 +24,8 @@ function addProduct(product) {
   }).format(product.price);
 
   btnBorrar.addEventListener("click", async () => {
-    fetch(
-      `https://api.fullstackpro.es/products-example/products/${product.id}`,
-      {
-        method: "DELETE",
-      }
-    ).then(() => {
-      tr.remove();
-    });
+    await productosService.delete(product.id);
+    tr.remove();
   });
 
   tbody.append(tr);
@@ -48,19 +46,22 @@ async function file2Base64(file) {
   });
 }
 
-form.image.addEventListener("change", (e) => {
+async function getProducts() {
+  const products = await productosService.getProductos();
+  products.forEach(addProduct);
+}
+
+form.image.addEventListener("change", async (e) => {
   const file = e.target.files[0]; // Archivo seleccionado
   if (!file) {
     imgPreview.src = "";
     return;
   }
 
-  file2Base64(file).then((base64) => {
-    imgPreview.src = base64;
-  });
+  imgPreview.src = await file2Base64(file);
 });
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const producto = {
@@ -70,24 +71,15 @@ form.addEventListener("submit", (e) => {
     imageUrl: imgPreview.src,
   };
 
-  fetch("https://api.fullstackpro.es/products-example/products", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(producto),
-  })
-    .then((resp) => resp.json())
-    .then((data) => {
-      addProduct(data.product);
-    });
+  try {
+    const productoInsert = await productosService.add(producto);
+    addProduct(productoInsert);
 
-  form.reset();
-  imgPreview.src = "";
+    form.reset();
+    imgPreview.src = "";
+  } catch (error) {
+    alert(error);
+  }
 });
 
-fetch("https://api.fullstackpro.es/products-example/products")
-  .then((res) => res.json())
-  .then((data) => {
-    data.products.forEach(addProduct);
-  });
+getProducts();
