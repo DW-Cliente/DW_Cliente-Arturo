@@ -1,0 +1,30 @@
+{
+  "name": "prueba-npm",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Arturo",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "hola": "echo Hola mundo desde npm",
+    "prestart": "npm run lint:fix",
+    "start": "lite-server",
+    "prelint": "npm run format",
+    "lint": "eslint index.js",
+    "lint:fix": "eslint index.js --fix",
+    "format": "prettier --write index.js",
+    "minify": "uglifyjs index.js -o index.min.js -c -m"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.12"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "eslint": "^9.38.0",
+    "globals": "^16.4.0",
+    "lite-server": "^2.6.1",
+    "prettier": "^3.6.2",
+    "uglify-js": "^3.19.3"
+  }
+}
