@@ -1,0 +1,19 @@
+@import "node_modules/ol/ol.css";
+@import "@geoapify/geocoder-autocomplete/styles/minimal.css";
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+#map {
+  flex-grow: 1;
+  width: 100%;
+}
+
+#autocomplete {
+    position: relative;
+}
