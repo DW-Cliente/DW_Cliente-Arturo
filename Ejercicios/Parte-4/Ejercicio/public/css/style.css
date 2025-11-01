@@ -1,0 +1,4 @@
+select:user-invalid,
+    input:user-invalid {
+        border: 1px solid red;
+    }

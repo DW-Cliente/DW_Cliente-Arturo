@@ -1,0 +1,1 @@
+//const imgPreview = document.getElementById("image-preview");
