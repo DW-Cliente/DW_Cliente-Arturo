@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 id: prop.id,
                 image: prop.mainPhoto,                        
                 title: prop.title,
-                town: prop.town?.name ?? "", //devolver cadena vacía si se recibe un null del servidor
-                province: prop.town?.province?.name ?? "", //devolver cadena vacía si recibe un null del servidor
+                town: prop.town.name,
+                province: prop.town.province.name,
                 description: prop.description,
                 price: prop.price,
                 sqmeters: prop.sqmeters,
