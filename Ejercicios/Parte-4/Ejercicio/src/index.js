@@ -1,6 +1,6 @@
 
 import { PropertiesService } from "./services/properties-service.js";
-import addProperty from "../utils/templateClon.js";
+import propertyTemplate from "../utils/templateClon.js";
 
 const listings = document.getElementById("property-listings");
 const template = document.getElementById("property-card-template");
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 baths: prop.numBaths
             };
 
-            const card = addProperty(property, listings, template);
+            const card = propertyTemplate(property, listings, template);
 
             if (card) {
                 const btnBorrar = card.querySelector(".btn-delete");

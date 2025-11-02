@@ -1,6 +1,6 @@
 // Función para clonar el template y rellena la card
 
-export default function addProperty(property, listings, template) {
+export default function propertyTemplate(property, listings, template) {
     const card = template.content.cloneNode(true);
     const returnCard = card.firstElementChild;
 
