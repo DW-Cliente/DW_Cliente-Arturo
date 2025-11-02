@@ -2,7 +2,7 @@
 
 export default function addProperty(property, listings, template) {
     const card = template.content.cloneNode(true);
-    const cardDevuelta = card.firstElementChild;
+    const returnCard = card.firstElementChild;
 
     card.querySelector(".property-image").src = property.image;
     card.querySelector(".property-title").append(property.title);
@@ -18,5 +18,5 @@ export default function addProperty(property, listings, template) {
 
 
     listings.appendChild(card);
-    return cardDevuelta;
+    return returnCard;
 }
