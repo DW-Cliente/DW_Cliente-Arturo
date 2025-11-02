@@ -16,7 +16,6 @@ export default function addProperty(property, listings, template) {
     card.querySelector(".property-rooms").append(`${property.rooms} rooms`);
     card.querySelector(".property-baths").append(`${property.baths} baths`);
 
-
     listings.appendChild(card);
     return returnCard;
 }
