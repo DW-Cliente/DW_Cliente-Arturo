@@ -2,11 +2,12 @@
 
 export default function addProperty(property, listings, template) {
     const card = template.content.cloneNode(true);
+    const cardDevuelta = card.firstElementChild;
 
     card.querySelector(".property-image").src = property.image;
     card.querySelector(".property-title").append(property.title);
     card.querySelector(".property-location").append(`${property.town}, ${property.province}`);
-    //card.querySelector(".property-description").append(property.description);
+    card.querySelector(".property-description").append(property.description);
 
     const priceText = new Intl.NumberFormat("en-GB", { style: "currency", currency: "EUR" }).format(property.price);
     card.querySelector(".property-price").append(priceText);
@@ -15,10 +16,7 @@ export default function addProperty(property, listings, template) {
     card.querySelector(".property-rooms").append(`${property.rooms} rooms`);
     card.querySelector(".property-baths").append(`${property.baths} baths`);
 
-    // Botón borrar card 
-    card.querySelector(".btn-delete").addEventListener("click", (e) => {
-        e.currentTarget.closest(".bg-white").remove();
-    });
 
-    listings.append(card);
+    listings.appendChild(card);
+    return cardDevuelta;
 }
