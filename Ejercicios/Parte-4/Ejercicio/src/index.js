@@ -2,8 +2,8 @@
 import { PropertiesService } from "./services/properties-service.js";
 import propertyTemplate from "../utils/templateClon.js";
 
-const listings = document.getElementById("property-listings");
-const template = document.getElementById("property-card-template");
+import { listings } from "./constants.js";
+import { template } from "./constants.js";
 
 const propertiesService = new PropertiesService();
 
@@ -43,6 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }); 
             }
         });
+        
     } catch (error) {
         alert(error);
     }

@@ -4,10 +4,10 @@ import validacion from "../utils/fileValidacion.js";
 import { ProvincesService } from "./services/provinces-service.js";
 import { PropertiesService } from "./services/properties-service.js";
 
-const form = document.getElementById("property-form");
-const imgPreview = document.getElementById("image-preview");
-const selectProvince = document.getElementById("province");
-const selectTown = document.getElementById("town");
+import { form } from "./constants.js";
+import { imgPreview } from "./constants.js";
+import { selectProvince } from "./constants.js";
+import { selectTown } from "./constants.js";
 
 const provincesService = new ProvincesService();
 const propertiesService = new PropertiesService();
@@ -20,7 +20,7 @@ function addProvinceOption(province) {
     selectProvince.appendChild(option);
 }
 
-// Añade una opción de municipio al select
+// Añade una opción de ciudad al select
 function addTownOption(town) {
     const option = document.createElement("option");
     option.value = town.id;
@@ -29,8 +29,7 @@ function addTownOption(town) {
 }
 
 // Borra todas las opciones del selectTown excepto la primera
-function clearTownsKeepFirst() {
-    if (!selectTown) return;
+function clearTowns() {
     for (let i = selectTown.options.length - 1; i >= 1; i--) {
         selectTown.remove(i);
     }
@@ -38,7 +37,6 @@ function clearTownsKeepFirst() {
 
 // Carga provincias desde el servidor
 async function loadProvinces() {
-    if (!selectProvince) return;
     try {
         const provinces = await provincesService.getProvinces();
         provinces.forEach(addProvinceOption);
@@ -47,20 +45,18 @@ async function loadProvinces() {
     }
 }
 
-// Evento: al cambiar provincia carga sus municipios
-if (selectProvince) {
-    selectProvince.addEventListener("change", async () => {
-        clearTownsKeepFirst();
-        const provinceId = selectProvince.value;
-        if (!provinceId) return;
-        try {
-            const towns = await provincesService.getTowns(provinceId);
-            towns.forEach(addTownOption);
-        } catch (error) {
-            alert(error);
-        }
-    });
-}
+// Al cambiar provincia carga sus municipios
+selectProvince.addEventListener("change", async () => {
+    clearTowns();
+    const provinceId = selectProvince.value;
+
+    try {
+        const towns = await provincesService.getTowns(provinceId);
+        towns.forEach(addTownOption);
+    } catch (error) {
+        alert(error);
+    }
+});
 
 loadProvinces();
 
