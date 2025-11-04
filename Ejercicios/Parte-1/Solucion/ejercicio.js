@@ -20,7 +20,7 @@ function timesChar(str, char) {
         str = str.toLocaleLowerCase();
         char = char.toLocaleLowerCase();
         for (let i = 0; i < str.length; i++) {
-            if (str[i] === char) times++;
+            if(str[i] === char) times++;
         }
         return times;
         // return (str.match(new RegExp(char, "ig")) || []).length; // -> SAME result in one line
@@ -42,19 +42,19 @@ console.log(timesChar("Hello", "bye"));
 
 console.log("EXERCISE 1 - PART 2");
 function isPalindrome(str) {
-    if (typeof str !== "string" || str.length < 1) {
-        console.error("The parameter must be a string and the length at least 1");
-        return;
-    }
+  if(typeof str !== "string" || str.length < 1) {
+    console.error("The parameter must be a string and the length at least 1");
+    return;
+  }
 
-    // Convert the string to an array of characters
-    const charArray = Array.from(str);
+  // Convert the string to an array of characters
+  const charArray = Array.from(str);
 
-    // Reverse the array and join the characters back into a string
-    const reversedStr = charArray.reverse().join('');
+  // Reverse the array and join the characters back into a string
+  const reversedStr = charArray.reverse().join('');
 
-    // Compare the original string with the reversed string
-    return str === reversedStr;
+  // Compare the original string with the reversed string
+  return str === reversedStr;
 }
 
 console.log(isPalindrome("abeceba")); // true
@@ -81,19 +81,19 @@ console.log(arr.filter(s => s.length >= 5).map(s => s.toLocaleUpperCase()).join(
 
 console.log("EXERCISE 1 - PART 4");
 function stringCompression(str) {
-    let compressedStr = '';
-    let count = 1;
+  let compressedStr = '';
+  let count = 1;
 
-    for (let i = 0; i < str.length; i++) {
-        if (str[i] === str[i + 1]) {
-            count++;
-        } else {
-            compressedStr += count + str[i];
-            count = 1;
-        }
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === str[i + 1]) {
+      count++;
+    } else {
+      compressedStr += count + str[i];
+      count = 1;
     }
+  }
 
-    return compressedStr;
+  return compressedStr;
 }
 
 console.log(stringCompression("GGGHHRRRRRRRUIIIOOOO")); // 3G2H7R1U3I4O
@@ -131,12 +131,12 @@ console.log(nums.join(' => '));
 
 console.log("EXERCISE 1 - PART 6");
 function findFirstRepeated(nums) {
-    nums.push(-1, -1);
-    return nums.find((elemento, index) => nums.indexOf(elemento) != index);
+  nums.push(-1, -1);
+  return nums.find((elemento, index) => nums.indexOf(elemento) != index);
 }
 
-console.log(findFirstRepeated([1, 4, 7, 3, 8, 4, 5, 5, 1])); // 4
-console.log(findFirstRepeated([4, 5, 7, 1, 2, 9, 12])); // -1
+console.log(findFirstRepeated([1,4,7,3,8,4,5,5,1])); // 4
+console.log(findFirstRepeated([4,5,7,1,2,9,12])); // -1
 
 /**
  * Part 7
@@ -159,7 +159,7 @@ console.log(names.reduce((final, name) => final + name[0], ""));
 
 console.log("EXERCISE 1 - PART 8");
 function filterWords(palabras, letras) {
-    return palabras.filter(p => Array.from(p).every(l => letras.includes(l)))
+  return palabras.filter(p => Array.from(p).every(l => letras.includes(l)))
 }
 
 console.log(filterWords(["house", "car", "watch", "table"], "catboulerham")); // ['car', 'table']
@@ -174,12 +174,12 @@ console.log(filterWords(["house", "car", "watch", "table"], "catboulerham")); //
 console.log("EXERCISE 1 - PART 9");
 
 function adjustLights(lights) {
-    const order1 = ['ðŸ”´', 'ðŸŸ¢'];
-    const order2 = order1.reverse();
+  const order1 = ['ðŸ”´', 'ðŸŸ¢'];
+  const order2 = order1.reverse();
 
-    const dif1 = lights.reduce((total, light, i) => total + +(light !== order1[i % 2]), 0);
-    const dif2 = lights.reduce((total, light, i) => total + +(light !== order2[i % 2]), 0);
-    return Math.min(dif1, dif2);
+  const dif1 = lights.reduce((total, light, i) => total + +(light !== order1[i%2]), 0);
+  const dif2 = lights.reduce((total, light, i) => total + +(light !== order2[i%2]), 0);
+  return Math.min(dif1, dif2);
 }
 
 console.log(adjustLights(['ðŸ”´', 'ðŸ”´', 'ðŸŸ¢', 'ðŸ”´', 'ðŸŸ¢']));
@@ -216,14 +216,14 @@ recipes.set('Huevos rotos', ['Huevos', 'JamÃ³n', 'Pimiento']);
 recipes.set('Guisantes con jamÃ³n', ['Guisantes', 'JamÃ³n', 'Cebolla']);
 
 const ingredients = new Map();
-for (let [dish, ingredientList] of recipes) {
-    for (let ingredient of ingredientList) {
-        if (ingredients.has(ingredient)) {
-            ingredients.get(ingredient).push(dish);
-        } else {
-            ingredients.set(ingredient, [dish]);
-        }
+for(let [dish, ingredientList] of recipes) {
+  for(let ingredient of ingredientList) {
+    if(ingredients.has(ingredient)) {
+      ingredients.get(ingredient).push(dish);
+    } else {
+      ingredients.set(ingredient, [dish]);
     }
+  }
 }
 
 console.log(ingredients);
@@ -274,8 +274,8 @@ console.log(destructSum([5, , 6]));
 console.log("EXERCISE 1 - PART 14");
 
 function getStringLengths(...strings) {
-    // Utilizando el operador spread para convertir los argumentos en un array
-    return strings.map(str => str.length);
+  // Utilizando el operador spread para convertir los argumentos en un array
+  return strings.map(str => str.length);
 }
 
 console.log(getStringLengths("potato", "milk", "car", "table")); // [6, 4, 3, 5]
@@ -300,8 +300,8 @@ console.log(arrayWithAddedElements); // Output: ['a', 'b', 1, 2, 3, 4, 5, 6]
 
 // Delete positions 4 and 5
 const arrayWithoutDeletedElements = [
-    ...arrayWithAddedElements.slice(0, 4),
-    ...arrayWithAddedElements.slice(6)
+  ...arrayWithAddedElements.slice(0, 4),
+  ...arrayWithAddedElements.slice(6)
 ];
 console.log(arrayWithoutDeletedElements); // Output: ['a', 'b', 1, 2, 5, 6]
 
