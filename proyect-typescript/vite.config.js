@@ -1,1 +1,11 @@
-/** AÑADIR LO DEL PROYECTO 4 COMO CONFIGURACION PARA TAILWIND CSS */
+// vite.config.js
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  server: {
+    host: '127.0.0.1',
+    port: 5173,
+    strictPort: true,
+    open: false,
+  },
+});
