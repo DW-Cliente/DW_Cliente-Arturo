@@ -2,8 +2,8 @@
 import { PropertiesService } from "./services/properties-service.js";
 import propertyTemplate from "../utils/templateClon.js";
 
-import { listings } from "./constants.js";
-import { template } from "./constants.js";
+const listings = document.getElementById("property-listings");
+const template = document.getElementById("property-card-template");
 
 const propertiesService = new PropertiesService();
 

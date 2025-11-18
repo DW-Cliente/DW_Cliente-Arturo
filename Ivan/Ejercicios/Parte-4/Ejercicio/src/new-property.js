@@ -4,10 +4,10 @@ import validacion from "../utils/fileValidacion.js";
 import { ProvincesService } from "./services/provinces-service.js";
 import { PropertiesService } from "./services/properties-service.js";
 
-import { form } from "./constants.js";
-import { imgPreview } from "./constants.js";
-import { selectProvince } from "./constants.js";
-import { selectTown } from "./constants.js";
+const form = document.getElementById("property-form");
+const imgPreview = document.getElementById("image-preview");
+const selectProvince = document.getElementById("province");
+const selectTown = document.getElementById("town");
 
 const provincesService = new ProvincesService();
 const propertiesService = new PropertiesService();
