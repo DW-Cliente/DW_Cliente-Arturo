@@ -1,0 +1,12 @@
+td {
+  vertical-align: middle;
+
+  img {
+    height: 40px;
+  }
+  &.red {
+    color: red;
+  }
+}
+
+ 
