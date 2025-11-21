@@ -21,6 +21,7 @@ import {
   Location,
   LocationStrategy,
   LowerCasePipe,
+  NavigationAdapterForLocation,
   NgClass,
   NgComponentOutlet,
   NgForOf,
@@ -93,11 +94,11 @@ import {
   provideNetlifyLoader,
   registerLocaleData,
   setRootDomAdapter
-} from "./chunk-QEUP2QJX.js";
+} from "./chunk-YJA4GTMC.js";
 import {
   DOCUMENT,
   IMAGE_CONFIG
-} from "./chunk-A4TDACB5.js";
+} from "./chunk-HTXCPTZM.js";
 export {
   APP_BASE_HREF,
   AsyncPipe,
@@ -145,6 +146,7 @@ export {
   PathLocationStrategy,
   PercentPipe,
   PlatformLocation,
+  PlatformNavigation,
   Plural,
   SlicePipe,
   TitleCasePipe,
@@ -188,10 +190,10 @@ export {
   provideNetlifyLoader,
   registerLocaleData,
   DomAdapter as ɵDomAdapter,
+  NavigationAdapterForLocation as ɵNavigationAdapterForLocation,
   NullViewportScroller as ɵNullViewportScroller,
   PLATFORM_BROWSER_ID as ɵPLATFORM_BROWSER_ID,
   PLATFORM_SERVER_ID as ɵPLATFORM_SERVER_ID,
-  PlatformNavigation as ɵPlatformNavigation,
   getDOM as ɵgetDOM,
   normalizeQueryParams as ɵnormalizeQueryParams,
   parseCookieValue as ɵparseCookieValue,
