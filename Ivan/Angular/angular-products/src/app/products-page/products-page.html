@@ -17,7 +17,7 @@
                     @for (product of products; track product.id) {
                         <tr>
                             <td><img [src]="product.imageUrl" alt=""></td>
-                            <td [ngClass]="{'red': $even}">{{ product.description }}</td>
+                            <td [ngClass]="{'text-danger': $even, 'text-success': $odd}">{{ product.description }}</td>
                             <td>{{ product.price }}</td>
                             <td>{{ product.available }}</td>
                         </tr>
