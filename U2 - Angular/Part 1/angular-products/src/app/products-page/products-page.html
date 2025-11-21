@@ -6,7 +6,14 @@
       <table class="table table-striped m-0">
         <thead>
           <tr>
-            <th>Imagen</th>
+            <th>
+              <button class="btn btn-sm" [ngClass]="{
+                'btn-danger': showImage,
+                'btn-primary': !showImage,
+               }" (click)="toggleImage()">
+                {{showImage?'Hide':'Show'}} images
+              </button>
+            </th>
             <th>Producto</th>
             <th>Precio</th>
             <th>Disponible</th>
@@ -14,8 +21,12 @@
         </thead>
         <tbody>
           @for (product of products; track product.id) {
-          <tr (click)="printDesc(product)">
-            <td><img [src]="product.imageUrl" alt=""></td>
+          <tr>
+            <td>
+              @if(showImage) {
+              <img [src]="product.imageUrl" alt="">
+              }
+            </td>
             <td [ngClass]="{'text-danger': $even, 'text-success': $odd}">{{ product.description }}</td>
             <td>{{ product.price }}</td>
             <td>{{ product.available }}</td>

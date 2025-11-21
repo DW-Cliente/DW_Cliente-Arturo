@@ -1,6 +1,6 @@
+import { NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 import { Product } from '../interfaces/product';
-import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'products-page',
@@ -9,6 +9,8 @@ import { NgClass } from '@angular/common';
   styleUrl: './products-page.css',
 })
 export class ProductsPage {
+  showImage = true;
+
   products: Product[] = [
     {
       id: 1,
@@ -44,7 +46,7 @@ export class ProductsPage {
     },
   ];
 
-  printDesc(product: Product) {
-    console.log(product.description);
+  toggleImage() {
+    this.showImage = !this.showImage;
   }
 }
