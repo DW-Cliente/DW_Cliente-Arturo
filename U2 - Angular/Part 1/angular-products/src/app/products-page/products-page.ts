@@ -1,6 +1,5 @@
-
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, computed, effect, inject, linkedSignal, signal } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Product } from '../interfaces/product';
 
 @Component({
@@ -8,6 +7,7 @@ import { Product } from '../interfaces/product';
   imports: [FormsModule],
   templateUrl: './products-page.html',
   styleUrl: './products-page.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductsPage {
   products: Product[] = [
@@ -45,23 +45,32 @@ export class ProductsPage {
     },
   ];
 
-  showImage = true;
-  newProduct!: Product;
-  fileName = '';
+  showImage = signal(true);
+  newProduct: Product = {
+    id: 0,
+    description: '',
+    available: '',
+    imageUrl: '',
+    rating: 1,
+    price: 0,
+  };
   nextId = 5;
+
+  count = signal(0);
+  doubleCount = linkedSignal(() => this.count() * 2);
+
+  constructor() {
+    effect(() => console.log(this.count(), this.doubleCount()));
+  }
 
   #changeDetector = inject(ChangeDetectorRef); // Necessary in new Angular zoneless apps
 
-  constructor() {
-    this.resetProduct();
-  }
-
   toggleImage() {
-    this.showImage = !this.showImage;
+    this.showImage.update(show => !show);
+    this.count.update(v => v + 1);
   }
 
-  changeImage(event: Event) {
-    const fileInput = event.target as HTMLInputElement;
+  changeImage(fileInput: HTMLInputElement) {
     if (!fileInput.files?.length) return;
     const reader = new FileReader();
     reader.readAsDataURL(fileInput.files[0]);
@@ -71,21 +80,10 @@ export class ProductsPage {
     });
   }
 
-  addProduct() {
+  addProduct(form: NgForm) {
     this.newProduct.id = this.nextId++;
-    this.products.push(this.newProduct);
-    this.resetProduct();
-  }
-
-  private resetProduct() {
-    this.newProduct = {
-      id: 0,
-      description: '',
-      available: '',
-      imageUrl: '',
-      rating: 1,
-      price: 0
-    };
-    this.fileName = '';
+    this.products.push({...this.newProduct});
+    form.resetForm();
+    this.newProduct.imageUrl = '';
   }
 }
