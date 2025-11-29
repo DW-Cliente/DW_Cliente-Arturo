@@ -60,9 +60,9 @@ import {
   ɵɵinject,
   ɵɵinjectAttribute,
   ɵɵstyleProp
-} from "./chunk-HTXCPTZM.js";
+} from "./chunk-3SCZCCG4.js";
 
-// node_modules/@angular/common/fesm2022/_location-chunk.mjs
+// ../../../node_modules/@angular/common/fesm2022/_location-chunk.mjs
 var _DOM = null;
 function getDOM() {
   return _DOM;
@@ -420,7 +420,7 @@ function _stripOrigin(baseHref) {
   return baseHref;
 }
 
-// node_modules/@angular/common/fesm2022/_common_module-chunk.mjs
+// ../../../node_modules/@angular/common/fesm2022/_common_module-chunk.mjs
 var HashLocationStrategy = class _HashLocationStrategy extends LocationStrategy {
   _platformLocation;
   _baseHref = "";
@@ -3232,7 +3232,7 @@ var CommonModule = class _CommonModule {
   }], null, null);
 })();
 
-// node_modules/@angular/common/fesm2022/_platform_navigation-chunk.mjs
+// ../../../node_modules/@angular/common/fesm2022/_platform_navigation-chunk.mjs
 var PlatformNavigation = class _PlatformNavigation {
   static ɵfac = function PlatformNavigation_Factory(__ngFactoryType__) {
     return new (__ngFactoryType__ || _PlatformNavigation)();
@@ -3253,7 +3253,7 @@ var PlatformNavigation = class _PlatformNavigation {
   }], null, null);
 })();
 
-// node_modules/@angular/common/fesm2022/_xhr-chunk.mjs
+// ../../../node_modules/@angular/common/fesm2022/_xhr-chunk.mjs
 function parseCookieValue(cookieStr, name) {
   name = encodeURIComponent(name);
   for (const cookie of cookieStr.split(";")) {
@@ -3268,7 +3268,7 @@ function parseCookieValue(cookieStr, name) {
 var XhrFactory = class {
 };
 
-// node_modules/@angular/common/fesm2022/common.mjs
+// ../../../node_modules/@angular/common/fesm2022/common.mjs
 var NavigationAdapterForLocation = class _NavigationAdapterForLocation extends Location {
   navigation = inject(PlatformNavigation);
   destroyRef = inject(DestroyRef);
@@ -4626,4 +4626,4 @@ export {
   PRECONNECT_CHECK_BLOCKLIST,
   NgOptimizedImage
 };
-//# sourceMappingURL=chunk-YJA4GTMC.js.map
+//# sourceMappingURL=chunk-EWQNPR4P.js.map
