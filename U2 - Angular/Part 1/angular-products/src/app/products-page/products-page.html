@@ -1,7 +1,7 @@
 <div class="card mb-4">
   <div class="card-header bg-success text-white">Add product</div>
   <div class="card-body">
-    <form (ngSubmit)="addProduct()">
+    <form (ngSubmit)="addProduct(form)" #form="ngForm">
       <label class="mb-3 row">
         <span class="col-sm-2 col-form-label text-sm-end">Description</span>
         <div class="col-sm-10">
@@ -11,7 +11,7 @@
             name="description"
             [(ngModel)]="newProduct.description"
           />
-          {{newProduct.description}}
+          {{ newProduct.description }}
         </div>
       </label>
       <label class="mb-3 row">
@@ -38,9 +38,10 @@
             type="file"
             class="form-control"
             accept="image/*"
-            (change)="changeImage($event)"
+            #imgInput
+            (change)="changeImage(imgInput)"
             name="fileName"
-            [(ngModel)]="fileName"
+            ngModel
           />
         </div>
       </label>
@@ -72,15 +73,16 @@
         <thead>
           <tr>
             <th>
+              @let buttonText = (showImage()?'Hide':'Show') + ' images';
               <button
                 class="btn btn-sm"
-                [ngClass]="{
-                'btn-danger': showImage,
-                'btn-primary': !showImage,
+                [class]="{
+                'btn-danger': showImage(),
+                'btn-primary': !showImage(),
                }"
                 (click)="toggleImage()"
               >
-                {{ showImage ? 'Hide' : 'Show' }} images
+                {{ buttonText }}
               </button>
             </th>
             <th>Producto</th>
@@ -92,11 +94,11 @@
           @for (product of products; track product.id) {
           <tr>
             <td>
-              @if(showImage) {
+              @if(showImage()) {
               <img [src]="product.imageUrl" alt="" />
               }
             </td>
-            <td [ngClass]="{ 'text-danger': $even, 'text-success': $odd }">
+            <td [class]="{ 'text-danger': $even, 'text-success': $odd }">
               {{ product.description }}
             </td>
             <td>{{ product.price }}</td>
