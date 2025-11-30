@@ -6,7 +6,7 @@ import {
   getDOM,
   parseCookieValue,
   setRootDomAdapter
-} from "./chunk-EWQNPR4P.js";
+} from "./chunk-CMEISML6.js";
 import {
   APP_BOOTSTRAP_LISTENER,
   APP_ID,
@@ -46,6 +46,7 @@ import {
   ViewEncapsulation,
   XSS_SECURITY_URL,
   __objRest,
+  __spreadProps,
   __spreadValues,
   _global,
   _sanitizeHtml,
@@ -90,9 +91,9 @@ import {
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵinject
-} from "./chunk-3SCZCCG4.js";
+} from "./chunk-4IZTRFUB.js";
 
-// ../../../node_modules/@angular/platform-browser/fesm2022/_dom_renderer-chunk.mjs
+// node_modules/@angular/platform-browser/fesm2022/_dom_renderer-chunk.mjs
 var EventManagerPlugin = class {
   _doc;
   constructor(_doc) {
@@ -782,7 +783,7 @@ var EmulatedEncapsulationDomRenderer2 = class extends NoneEncapsulationDomRender
   }
 };
 
-// ../../../node_modules/@angular/platform-browser/fesm2022/_browser-chunk.mjs
+// node_modules/@angular/platform-browser/fesm2022/_browser-chunk.mjs
 var BrowserDomAdapter = class _BrowserDomAdapter extends DomAdapter {
   supportsDOMEvents = true;
   static makeCurrent() {
@@ -1147,7 +1148,7 @@ var BrowserModule = class _BrowserModule {
   }], () => [], null);
 })();
 
-// ../../../node_modules/@angular/common/fesm2022/_module-chunk.mjs
+// node_modules/@angular/common/fesm2022/_module-chunk.mjs
 var HttpHeaders = class _HttpHeaders {
   headers;
   normalizedNames = /* @__PURE__ */ new Map();
@@ -2901,9 +2902,9 @@ var HttpXsrfTokenExtractor = class _HttpXsrfTokenExtractor {
     }]
   }], null, null);
 })();
+var ABSOLUTE_URL_REGEX = /^(?:https?:)?\/\//i;
 function xsrfInterceptorFn(req, next) {
-  const lcUrl = req.url.toLowerCase();
-  if (!inject(XSRF_ENABLED) || req.method === "GET" || req.method === "HEAD" || lcUrl.startsWith("http://") || lcUrl.startsWith("https://")) {
+  if (!inject(XSRF_ENABLED) || req.method === "GET" || req.method === "HEAD" || ABSOLUTE_URL_REGEX.test(req.url)) {
     return next(req);
   }
   const token = inject(HttpXsrfTokenExtractor).getToken();
@@ -3118,7 +3119,7 @@ var HttpClientJsonpModule = class _HttpClientJsonpModule {
   }], null, null);
 })();
 
-// ../../../node_modules/@angular/common/fesm2022/http.mjs
+// node_modules/@angular/common/fesm2022/http.mjs
 var httpResource = (() => {
   const jsonFn = makeHttpResourceFn("json");
   jsonFn.arrayBuffer = makeHttpResourceFn("arraybuffer");
@@ -3132,7 +3133,7 @@ function makeHttpResourceFn(responseType) {
       assertInInjectionContext(httpResource2);
     }
     const injector = options?.injector ?? inject(Injector);
-    return new HttpResourceImpl(injector, () => normalizeRequest(request, responseType), options?.defaultValue, options?.parse, options?.equal);
+    return new HttpResourceImpl(injector, () => normalizeRequest(request, responseType), options?.defaultValue, options?.debugName, options?.parse, options?.equal);
   };
 }
 function normalizeRequest(request, responseType) {
@@ -3170,36 +3171,30 @@ function normalizeRequest(request, responseType) {
 }
 var HttpResourceImpl = class extends ResourceImpl {
   client;
-  _headers = linkedSignal(...ngDevMode ? [{
-    debugName: "_headers",
+  _headers = linkedSignal(__spreadProps(__spreadValues({}, ngDevMode ? {
+    debugName: "_headers"
+  } : {}), {
     source: this.extRequest,
     computation: () => void 0
-  }] : [{
+  }));
+  _progress = linkedSignal(__spreadProps(__spreadValues({}, ngDevMode ? {
+    debugName: "_progress"
+  } : {}), {
     source: this.extRequest,
     computation: () => void 0
-  }]);
-  _progress = linkedSignal(...ngDevMode ? [{
-    debugName: "_progress",
+  }));
+  _statusCode = linkedSignal(__spreadProps(__spreadValues({}, ngDevMode ? {
+    debugName: "_statusCode"
+  } : {}), {
     source: this.extRequest,
     computation: () => void 0
-  }] : [{
-    source: this.extRequest,
-    computation: () => void 0
-  }]);
-  _statusCode = linkedSignal(...ngDevMode ? [{
-    debugName: "_statusCode",
-    source: this.extRequest,
-    computation: () => void 0
-  }] : [{
-    source: this.extRequest,
-    computation: () => void 0
-  }]);
-  headers = computed(() => this.status() === "resolved" || this.status() === "error" ? this._headers() : void 0, ...ngDevMode ? [{
+  }));
+  headers = computed(() => this.status() === "resolved" || this.status() === "error" ? this._headers() : void 0, __spreadValues({}, ngDevMode ? {
     debugName: "headers"
-  }] : []);
+  } : {}));
   progress = this._progress.asReadonly();
   statusCode = this._statusCode.asReadonly();
-  constructor(injector, request, defaultValue, parse, equal) {
+  constructor(injector, request, defaultValue, debugName, parse, equal) {
     super(request, ({
       params: request2,
       abortSignal
@@ -3209,9 +3204,9 @@ var HttpResourceImpl = class extends ResourceImpl {
       abortSignal.addEventListener("abort", onAbort);
       const stream = signal({
         value: void 0
-      }, ...ngDevMode ? [{
+      }, __spreadValues({}, ngDevMode ? {
         debugName: "stream"
-      }] : []);
+      } : {}));
       let resolve;
       const promise = new Promise((r) => resolve = r);
       const send = (value) => {
@@ -3260,7 +3255,7 @@ var HttpResourceImpl = class extends ResourceImpl {
         }
       });
       return promise;
-    }, defaultValue, equal, injector);
+    }, defaultValue, equal, debugName, injector);
     this.client = injector.get(HttpClient);
   }
   set(value) {
@@ -3433,7 +3428,7 @@ function appendMissingHeadersDetection(url, headers, headersToInclude) {
   });
 }
 
-// ../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs
+// node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs
 var Meta = class _Meta {
   _doc;
   _dom;
@@ -4013,7 +4008,7 @@ function provideClientHydration(...features) {
   }
   return makeEnvironmentProviders([typeof ngDevMode !== "undefined" && ngDevMode ? provideEnabledBlockingInitialNavigationDetector() : [], withDomHydration(), featuresKind.has(HydrationFeatureKind.NoHttpTransferCache) || hasHttpTransferCacheOptions ? [] : withHttpTransferCache({}), providers]);
 }
-var VERSION = new Version("21.0.0");
+var VERSION = new Version("21.0.1");
 
 export {
   EventManagerPlugin,
@@ -4052,4 +4047,4 @@ export {
   provideClientHydration,
   VERSION
 };
-//# sourceMappingURL=chunk-TBNPJRLH.js.map
+//# sourceMappingURL=chunk-OJQJDDCR.js.map

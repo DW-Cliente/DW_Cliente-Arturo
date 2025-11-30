@@ -1,6 +1,6 @@
 import {
   Title
-} from "./chunk-TBNPJRLH.js";
+} from "./chunk-OJQJDDCR.js";
 import {
   HashLocationStrategy,
   LOCATION_INITIALIZED,
@@ -10,7 +10,7 @@ import {
   PathLocationStrategy,
   PlatformNavigation,
   ViewportScroller
-} from "./chunk-EWQNPR4P.js";
+} from "./chunk-CMEISML6.js";
 import {
   APP_BOOTSTRAP_LISTENER,
   ApplicationRef,
@@ -116,9 +116,9 @@ import {
   ɵɵloadQuery,
   ɵɵqueryRefresh,
   ɵɵsanitizeUrlOrResourceUrl
-} from "./chunk-3SCZCCG4.js";
+} from "./chunk-4IZTRFUB.js";
 
-// ../../../node_modules/@angular/router/fesm2022/_router-chunk.mjs
+// node_modules/@angular/router/fesm2022/_router-chunk.mjs
 var PRIMARY_OUTLET = "primary";
 var RouteTitleKey = Symbol("RouteTitle");
 var ParamsAsMap = class {
@@ -1775,9 +1775,9 @@ var RouterOutlet = class _RouterOutlet {
   deactivateEvents = new EventEmitter();
   attachEvents = new EventEmitter();
   detachEvents = new EventEmitter();
-  routerOutletData = input(...ngDevMode ? [void 0, {
+  routerOutletData = input(void 0, __spreadValues({}, ngDevMode ? {
     debugName: "routerOutletData"
-  }] : []);
+  } : {}));
   parentContexts = inject(ChildrenOutletContexts);
   location = inject(ViewContainerRef);
   changeDetector = inject(ChangeDetectorRef);
@@ -3889,16 +3889,15 @@ var noop = () => {
 };
 var NAVIGATION_ERROR_HANDLER = new InjectionToken(typeof ngDevMode === "undefined" || ngDevMode ? "navigation error handler" : "");
 var NavigationTransitions = class _NavigationTransitions {
-  currentNavigation = signal(null, ...ngDevMode ? [{
-    debugName: "currentNavigation",
+  currentNavigation = signal(null, __spreadProps(__spreadValues({}, ngDevMode ? {
+    debugName: "currentNavigation"
+  } : {}), {
     equal: () => false
-  }] : [{
-    equal: () => false
-  }]);
+  }));
   currentTransition = null;
-  lastSuccessfulNavigation = signal(null, ...ngDevMode ? [{
+  lastSuccessfulNavigation = signal(null, __spreadValues({}, ngDevMode ? {
     debugName: "lastSuccessfulNavigation"
-  }] : []);
+  } : {}));
   events = new Subject();
   transitionAbortWithErrorSubject = new Subject();
   configLoader = inject(RouterConfigLoader);
@@ -4787,7 +4786,7 @@ function validateCommands(commands) {
   }
 }
 
-// ../../../node_modules/@angular/router/fesm2022/_router_module-chunk.mjs
+// node_modules/@angular/router/fesm2022/_router_module-chunk.mjs
 var RouterLink = class _RouterLink {
   router;
   route;
@@ -4795,9 +4794,9 @@ var RouterLink = class _RouterLink {
   renderer;
   el;
   locationStrategy;
-  reactiveHref = signal(null, ...ngDevMode ? [{
+  reactiveHref = signal(null, __spreadValues({}, ngDevMode ? {
     debugName: "reactiveHref"
-  }] : []);
+  } : {}));
   get href() {
     return untracked(this.reactiveHref);
   }
@@ -5842,7 +5841,7 @@ function provideRouterInitializer() {
   }];
 }
 
-// ../../../node_modules/@angular/router/fesm2022/router.mjs
+// node_modules/@angular/router/fesm2022/router.mjs
 function mapToCanMatch(providers) {
   return providers.map((provider) => (...params) => inject(provider).canMatch(...params));
 }
@@ -5858,7 +5857,7 @@ function mapToCanDeactivate(providers) {
 function mapToResolve(provider) {
   return (...params) => inject(provider).resolve(...params);
 }
-var VERSION = new Version("21.0.0");
+var VERSION = new Version("21.0.1");
 export {
   ActivatedRoute,
   ActivatedRouteSnapshot,

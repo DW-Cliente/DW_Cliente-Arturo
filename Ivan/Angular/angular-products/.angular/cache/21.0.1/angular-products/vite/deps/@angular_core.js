@@ -112,6 +112,7 @@ import {
   PendingTasksInternal,
   Pipe,
   PlatformRef,
+  ProfilerEvent,
   Query,
   QueryList,
   R3Injector,
@@ -496,7 +497,7 @@ import {
   ɵɵvalidateIframeAttribute,
   ɵɵviewQuery,
   ɵɵviewQuerySignal
-} from "./chunk-3SCZCCG4.js";
+} from "./chunk-4IZTRFUB.js";
 export {
   ANIMATION_MODULE_TYPE,
   APP_BOOTSTRAP_LISTENER,
@@ -698,6 +699,7 @@ export {
   PROVIDED_NG_ZONE as ɵPROVIDED_NG_ZONE,
   PROVIDED_ZONELESS as ɵPROVIDED_ZONELESS,
   PendingTasksInternal as ɵPendingTasksInternal,
+  ProfilerEvent as ɵProfilerEvent,
   R3Injector as ɵR3Injector,
   ReflectionCapabilities as ɵReflectionCapabilities,
   ComponentFactory as ɵRender3ComponentFactory,
