@@ -1,0 +1,12 @@
+<tr>
+  <td>
+    @if (showImage()) {
+      <img [src]="product().imageUrl" [title]="product().description | uppercase" alt="" />
+    }
+  </td>
+  <td>
+    {{ product().description }}
+  </td>
+  <td>{{ product().price | intlCurrency: 'EUR' : 'es-ES' }}</td>
+  <td>{{ product().available | date }}</td>
+</tr>
