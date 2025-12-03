@@ -1,25 +1,22 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { Product } from '../interfaces/product';
 import { DatePipe, UpperCasePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { Product } from '../interfaces/product';
 import { IntlCurrencyPipe } from '../pipes/intl-currency-pipe';
+import { StarRating } from '../star-rating/star-rating';
 
 @Component({
   selector: 'product-item',
-  imports: [DatePipe, IntlCurrencyPipe, UpperCasePipe],
+  imports: [DatePipe, IntlCurrencyPipe, UpperCasePipe, StarRating],
   templateUrl: './product-item.html',
   styleUrl: './product-item.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductItem {
-  product = signal<Product>({
-    id: 1,
-    description: 'SSD hard drive',
-    available: '2016-10-03',
-    price: 75,
-    imageUrl: '/ssd.jpg',
-    rating: 5,
-  });
-  showImage = signal(true);
+  product = input.required<Product>();
+  showImage = input(true);
+  deleted = output<void>();
 
-  deleteProduct() { /* Vacía por ahora */}
+  deleteProduct() {
+    this.deleted.emit();
+  }
 }

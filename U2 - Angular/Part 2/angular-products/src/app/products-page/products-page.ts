@@ -1,17 +1,17 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   computed,
-  inject,
-  signal,
+  signal
 } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Product } from '../interfaces/product';
+import { ProductItem } from '../product-item/product-item';
+import { ProductForm } from '../product-form/product-form';
 
 @Component({
   selector: 'products-page',
-  imports: [FormsModule],
+  imports: [FormsModule, ProductItem, ProductForm],
   templateUrl: './products-page.html',
   styleUrl: './products-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -53,43 +53,22 @@ export class ProductsPage {
   ]);
 
   showImage = signal(true);
-  newProduct: Product = {
-    id: 0,
-    description: '',
-    available: '',
-    imageUrl: '',
-    rating: 1,
-    price: 0,
-  };
-  nextId = 5;
   search = signal('');
   filteredProducts = computed(() =>
     this.products().filter((p) =>
-      p.description.toLocaleLowerCase().includes(this.search().toLocaleLowerCase())
-    )
+      p.description.toLocaleLowerCase().includes(this.search().toLocaleLowerCase()),
+    ),
   );
-
-  #changeDetector = inject(ChangeDetectorRef); // Necessary in new Angular zoneless apps
 
   toggleImage() {
     this.showImage.update((show) => !show);
   }
 
-  changeImage(fileInput: HTMLInputElement) {
-    if (!fileInput.files?.length) return;
-    const reader = new FileReader();
-    reader.readAsDataURL(fileInput.files[0]);
-    reader.addEventListener('load', () => {
-      this.newProduct.imageUrl = reader.result as string;
-      this.#changeDetector.markForCheck(); // Necessary in new Angular zoneless apps
-    });
+  addProduct(product: Product) {
+    this.products.update((products) => [...products, product]);
   }
 
-  addProduct(form: NgForm) {
-    this.newProduct.id = this.nextId++;
-    const newProduct = { ...this.newProduct };
-    this.products.update(products => [...products, newProduct]);
-    form.resetForm();
-    this.newProduct.imageUrl = '';
+  deleteProduct(product: Product) {
+    this.products.update((products) => products.filter((p) => p !== product));
   }
 }
