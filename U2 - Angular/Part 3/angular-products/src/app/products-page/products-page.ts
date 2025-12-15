@@ -1,13 +1,15 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
+  inject,
+  linkedSignal,
   signal
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../interfaces/product';
-import { ProductItem } from '../product-item/product-item';
 import { ProductForm } from '../product-form/product-form';
+import { ProductItem } from '../product-item/product-item';
+import { ProductsService } from '../services/products-service';
 
 @Component({
   selector: 'products-page',
@@ -17,47 +19,14 @@ import { ProductForm } from '../product-form/product-form';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsPage {
-  products = signal<Product[]>([
-    {
-      id: 1,
-      description: 'SSD hard drive',
-      available: '2016-10-03',
-      price: 75,
-      imageUrl: '/ssd.jpg',
-      rating: 5,
-    },
-    {
-      id: 2,
-      description: 'LGA1151 Motherboard',
-      available: '2016-09-15',
-      price: 96.95,
-      imageUrl: '/motherboard.jpg',
-      rating: 4,
-    },
-    {
-      id: 3,
-      description: 'Hard Drive 4TB',
-      available: '2016-11-21',
-      price: 56.95,
-      imageUrl: '/hdd.jpg',
-      rating: 2,
-    },
-    {
-      id: 4,
-      description: '16GB DDR5',
-      available: '2016-09-15',
-      price: 175.95,
-      imageUrl: '/ram.jpg',
-      rating: 3,
-    },
-  ]);
-
   showImage = signal(true);
   search = signal('');
-  filteredProducts = computed(() =>
-    this.products().filter((p) =>
-      p.description.toLocaleLowerCase().includes(this.search().toLocaleLowerCase()),
-    ),
+
+  #productsService = inject(ProductsService);
+  productsResource = this.#productsService.getProductsResource(this.search);
+
+  products = linkedSignal(() =>
+    this.productsResource.hasValue() ? this.productsResource.value().products : [],
   );
 
   toggleImage() {

@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { EncodeBase64Directive } from '../directives/encode-base64-directive';
 import { Product } from '../interfaces/product';
+import { ProductsService } from '../services/products-service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'product-form',
@@ -14,20 +16,24 @@ export class ProductForm {
   added = output<Product>();
 
   newProduct: Product = {
-    id: 0,
     description: '',
     available: '',
     imageUrl: '',
     rating: 1,
     price: 0,
   };
-  nextId = 5;
+
+  #productsService = inject(ProductsService);
+  #destroyRef = inject(DestroyRef);
 
   addProduct(form: NgForm) {
-    this.newProduct.id = this.nextId++;
-    const newProduct = { ...this.newProduct };
-    this.added.emit(newProduct);
-    form.resetForm();
-    this.newProduct.imageUrl = '';
+    this.#productsService
+      .insertProduct(this.newProduct)
+      .pipe(takeUntilDestroyed(this.#destroyRef))
+      .subscribe((product) => {
+        this.added.emit(product);
+        form.resetForm();
+        this.newProduct.imageUrl = '';
+      });
   }
 }

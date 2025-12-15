@@ -16,7 +16,7 @@
       </div>
       <div class="col-form-label col-sm-5">Filtered by: {{ search() }}</div>
     </div>
-    @if (filteredProducts().length) {
+    @if (products().length) {
       <div class="row headers g-0">
         <div class="col-2">
           @let buttonText = (showImage() ? 'Hide' : 'Show') + ' images';
@@ -37,7 +37,7 @@
         <div class="col my-auto">Puntuación</div>
         <div class="col-auto" style="width: 2em"></div>
       </div>
-      @for (product of filteredProducts(); track product.id) {
+      @for (product of products(); track product.id) {
         <product-item
           [product]="product"
           [showImage]="showImage()"
@@ -45,6 +45,15 @@
           class="row g-0"
         />
       }
+    } @else if (productsResource.error()) {
+      <h3 class="p-4 text-danger">Error cargando productos</h3>
+    } @else if (productsResource.isLoading()) {
+      <h3 class="p-4">
+        <div class="spinner-border text-secondary d-inline-block" role="status">
+          <span class="sr-only"></span>
+        </div>
+        Cargando productos...
+      </h3>
     } @else {
       <h3 class="p-4">No hay productos disponibles</h3>
     }
