@@ -7,7 +7,7 @@ import { map, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductsService {
-  readonly #url = 'https://api.fullstackpro.es/products-example/products';
+  readonly #url = 'products';
   readonly #http = inject(HttpClient);
 
   getProductsResource(search: Signal<string>) {
