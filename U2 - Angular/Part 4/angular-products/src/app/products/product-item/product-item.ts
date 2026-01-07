@@ -9,14 +9,15 @@ import {
   output,
 } from '@angular/core';
 import { Product } from '../interfaces/product';
-import { IntlCurrencyPipe } from '../pipes/intl-currency-pipe';
-import { StarRating } from '../star-rating/star-rating';
+import { IntlCurrencyPipe } from '../../pipes/intl-currency-pipe';
+import { StarRating } from '../../star-rating/star-rating';
 import { ProductsService } from '../services/products-service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'product-item',
-  imports: [DatePipe, IntlCurrencyPipe, UpperCasePipe, StarRating],
+  imports: [DatePipe, IntlCurrencyPipe, UpperCasePipe, StarRating, RouterLink],
   templateUrl: './product-item.html',
   styleUrl: './product-item.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

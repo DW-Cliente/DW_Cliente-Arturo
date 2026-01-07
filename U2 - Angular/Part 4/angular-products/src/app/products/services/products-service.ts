@@ -17,6 +17,10 @@ export class ProductsService {
     });
   }
 
+  getProductIdResource(id: Signal<number>) {
+    return httpResource<SingleProductResponse>(() => `${this.#url}/${id()}`);
+  }
+
   changeRating(idProduct: number, rating: number): Observable<void> {
     return this.#http.put<void>(`${this.#url}/${idProduct}/rating`, {
       rating: rating,
