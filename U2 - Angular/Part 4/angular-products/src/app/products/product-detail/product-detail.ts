@@ -3,8 +3,8 @@ import { ProductsService } from '../services/products-service';
 import { Title } from '@angular/platform-browser';
 import { Router, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { StarRating } from '../../star-rating/star-rating';
-import { IntlCurrencyPipe } from '../../pipes/intl-currency-pipe';
+import { StarRating } from '../../shared/star-rating/star-rating';
+import { IntlCurrencyPipe } from '../../shared/pipes/intl-currency-pipe';
 import { DatePipe } from '@angular/common';
 
 @Component({

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EncodeBase64Directive } from '../../directives/encode-base64-directive';
+import { EncodeBase64Directive } from '../../shared/directives/encode-base64-directive';
 import { CanComponentDeactivate } from '../../guards/leave-page-guard';
 import { Product } from '../interfaces/product';
 import { ProductsService } from '../services/products-service';
